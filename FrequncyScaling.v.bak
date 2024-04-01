@@ -1,0 +1,16 @@
+module frequencyscaling(
+input clk_50Mhz,
+output reg clk_3125khz)
+
+reg counter;
+initial begin
+counter=3'b0;
+end
+always@(posedge clk_50Mhz)
+begin
+if(!counter)
+begin
+clk_3125khz=~clk_3125khz;
+counter=counter+1'b1;
+end
+endmodule

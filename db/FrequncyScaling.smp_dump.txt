@@ -1,0 +1,5 @@
+
+State Machine - |FrequencyScaling|counter_3125khz
+Name counter_3125khz.0111 
+counter_3125khz.0000 0 
+counter_3125khz.0111 1 

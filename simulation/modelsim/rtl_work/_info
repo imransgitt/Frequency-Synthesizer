@@ -1,0 +1,36 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Imran S/OneDrive/Desktop/Frequency Scaling/simulation/modelsim
+vFrequencyScaling
+!s110 1695743031
+!i10b 1
+!s100 LDaMAY81mCIG68I:0z3^=1
+!s11b Dg1SIo80bB@j0V0VzS_@n1
+IU<[cedkVJKazJ;DEELL3M0
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1695733665
+8C:/Users/Imran S/OneDrive/Desktop/Frequency Scaling/FrequencyScaling.v
+FC:/Users/Imran S/OneDrive/Desktop/Frequency Scaling/FrequencyScaling.v
+!i122 0
+L0 1 22
+OV;L;2020.1;71
+r1
+!s85 0
+31
+!s108 1695743031.000000
+!s107 C:/Users/Imran S/OneDrive/Desktop/Frequency Scaling/FrequencyScaling.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Imran S/OneDrive/Desktop/Frequency Scaling|C:/Users/Imran S/OneDrive/Desktop/Frequency Scaling/FrequencyScaling.v|
+!i113 1
+o-vlog01compat -work work
+!s92 -vlog01compat -work work {+incdir+C:/Users/Imran S/OneDrive/Desktop/Frequency Scaling}
+tCvgOpt 0
+n@frequency@scaling

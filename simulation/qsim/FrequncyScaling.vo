@@ -1,0 +1,324 @@
+// Copyright (C) 2020  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and any partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel FPGA IP License Agreement, or other applicable license
+// agreement, including, without limitation, that your use is for
+// the sole purpose of programming logic devices manufactured by
+// Intel and sold by Intel or its authorized distributors.  Please
+// refer to the applicable agreement for further details, at
+// https://fpgasoftware.intel.com/eula.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus Prime"
+// VERSION "Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
+
+// DATE "09/26/2023 18:38:59"
+
+// 
+// Device: Altera EP4CE6E22C7 Package TQFP144
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module FrequencyScaling (
+	clk_50Mhz,
+	clk_3125khz);
+input 	clk_50Mhz;
+output 	clk_3125khz;
+
+// Design Ports Information
+// clk_3125khz	=>  Location: PIN_30,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// clk_50Mhz	=>  Location: PIN_23,	 I/O Standard: 2.5 V,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire \clk_3125khz~output_o ;
+wire \clk_50Mhz~input_o ;
+wire \clk_50Mhz~inputclkctrl_outclk ;
+wire \counter_3125khz[0]~3_combout ;
+wire \counter_3125khz[1]~2_combout ;
+wire \counter_3125khz[2]~1_combout ;
+wire \counter_3125khz[3]~0_combout ;
+wire \clk_3125khz~0_combout ;
+wire \clk_3125khz~reg0_q ;
+wire [3:0] counter_3125khz;
+
+
+hard_block auto_generated_inst(
+	.devpor(devpor),
+	.devclrn(devclrn),
+	.devoe(devoe));
+
+// Location: IOOBUF_X0_Y8_N16
+cycloneive_io_obuf \clk_3125khz~output (
+	.i(\clk_3125khz~reg0_q ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\clk_3125khz~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \clk_3125khz~output .bus_hold = "false";
+defparam \clk_3125khz~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y11_N8
+cycloneive_io_ibuf \clk_50Mhz~input (
+	.i(clk_50Mhz),
+	.ibar(gnd),
+	.o(\clk_50Mhz~input_o ));
+// synopsys translate_off
+defparam \clk_50Mhz~input .bus_hold = "false";
+defparam \clk_50Mhz~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: CLKCTRL_G2
+cycloneive_clkctrl \clk_50Mhz~inputclkctrl (
+	.ena(vcc),
+	.inclk({vcc,vcc,vcc,\clk_50Mhz~input_o }),
+	.clkselect(2'b00),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.outclk(\clk_50Mhz~inputclkctrl_outclk ));
+// synopsys translate_off
+defparam \clk_50Mhz~inputclkctrl .clock_type = "global clock";
+defparam \clk_50Mhz~inputclkctrl .ena_register_mode = "none";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y8_N10
+cycloneive_lcell_comb \counter_3125khz[0]~3 (
+// Equation(s):
+// \counter_3125khz[0]~3_combout  = !counter_3125khz[0]
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(counter_3125khz[0]),
+	.datad(gnd),
+	.cin(gnd),
+	.combout(\counter_3125khz[0]~3_combout ),
+	.cout());
+// synopsys translate_off
+defparam \counter_3125khz[0]~3 .lut_mask = 16'h0F0F;
+defparam \counter_3125khz[0]~3 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X1_Y8_N11
+dffeas \counter_3125khz[0] (
+	.clk(\clk_50Mhz~inputclkctrl_outclk ),
+	.d(\counter_3125khz[0]~3_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(counter_3125khz[0]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \counter_3125khz[0] .is_wysiwyg = "true";
+defparam \counter_3125khz[0] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y8_N12
+cycloneive_lcell_comb \counter_3125khz[1]~2 (
+// Equation(s):
+// \counter_3125khz[1]~2_combout  = counter_3125khz[1] $ (counter_3125khz[0])
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(counter_3125khz[1]),
+	.datad(counter_3125khz[0]),
+	.cin(gnd),
+	.combout(\counter_3125khz[1]~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \counter_3125khz[1]~2 .lut_mask = 16'h0FF0;
+defparam \counter_3125khz[1]~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X1_Y8_N13
+dffeas \counter_3125khz[1] (
+	.clk(\clk_50Mhz~inputclkctrl_outclk ),
+	.d(\counter_3125khz[1]~2_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(counter_3125khz[1]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \counter_3125khz[1] .is_wysiwyg = "true";
+defparam \counter_3125khz[1] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y8_N28
+cycloneive_lcell_comb \counter_3125khz[2]~1 (
+// Equation(s):
+// \counter_3125khz[2]~1_combout  = counter_3125khz[2] $ (((counter_3125khz[1] & counter_3125khz[0])))
+
+	.dataa(counter_3125khz[1]),
+	.datab(gnd),
+	.datac(counter_3125khz[2]),
+	.datad(counter_3125khz[0]),
+	.cin(gnd),
+	.combout(\counter_3125khz[2]~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \counter_3125khz[2]~1 .lut_mask = 16'h5AF0;
+defparam \counter_3125khz[2]~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X1_Y8_N29
+dffeas \counter_3125khz[2] (
+	.clk(\clk_50Mhz~inputclkctrl_outclk ),
+	.d(\counter_3125khz[2]~1_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(counter_3125khz[2]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \counter_3125khz[2] .is_wysiwyg = "true";
+defparam \counter_3125khz[2] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y8_N18
+cycloneive_lcell_comb \counter_3125khz[3]~0 (
+// Equation(s):
+// \counter_3125khz[3]~0_combout  = counter_3125khz[3] $ (((counter_3125khz[1] & (counter_3125khz[2] & counter_3125khz[0]))))
+
+	.dataa(counter_3125khz[1]),
+	.datab(counter_3125khz[2]),
+	.datac(counter_3125khz[3]),
+	.datad(counter_3125khz[0]),
+	.cin(gnd),
+	.combout(\counter_3125khz[3]~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \counter_3125khz[3]~0 .lut_mask = 16'h78F0;
+defparam \counter_3125khz[3]~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X1_Y8_N19
+dffeas \counter_3125khz[3] (
+	.clk(\clk_50Mhz~inputclkctrl_outclk ),
+	.d(\counter_3125khz[3]~0_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(counter_3125khz[3]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \counter_3125khz[3] .is_wysiwyg = "true";
+defparam \counter_3125khz[3] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y8_N16
+cycloneive_lcell_comb \clk_3125khz~0 (
+// Equation(s):
+// \clk_3125khz~0_combout  = !counter_3125khz[3]
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(counter_3125khz[3]),
+	.cin(gnd),
+	.combout(\clk_3125khz~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \clk_3125khz~0 .lut_mask = 16'h00FF;
+defparam \clk_3125khz~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X1_Y8_N17
+dffeas \clk_3125khz~reg0 (
+	.clk(\clk_50Mhz~inputclkctrl_outclk ),
+	.d(\clk_3125khz~0_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\clk_3125khz~reg0_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \clk_3125khz~reg0 .is_wysiwyg = "true";
+defparam \clk_3125khz~reg0 .power_up = "low";
+// synopsys translate_on
+
+assign clk_3125khz = \clk_3125khz~output_o ;
+
+endmodule
+
+module hard_block (
+
+	devpor,
+	devclrn,
+	devoe);
+
+// Design Ports Information
+// ~ALTERA_ASDO_DATA1~	=>  Location: PIN_6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// ~ALTERA_FLASH_nCE_nCSO~	=>  Location: PIN_8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// ~ALTERA_DCLK~	=>  Location: PIN_12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// ~ALTERA_DATA0~	=>  Location: PIN_13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// ~ALTERA_nCEO~	=>  Location: PIN_101,	 I/O Standard: 2.5 V,	 Current Strength: 8mA
+
+input 	devpor;
+input 	devclrn;
+input 	devoe;
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+wire \~ALTERA_ASDO_DATA1~~padout ;
+wire \~ALTERA_FLASH_nCE_nCSO~~padout ;
+wire \~ALTERA_DATA0~~padout ;
+wire \~ALTERA_ASDO_DATA1~~ibuf_o ;
+wire \~ALTERA_FLASH_nCE_nCSO~~ibuf_o ;
+wire \~ALTERA_DATA0~~ibuf_o ;
+
+
+endmodule
